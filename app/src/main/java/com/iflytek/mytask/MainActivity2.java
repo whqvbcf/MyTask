@@ -1,0 +1,79 @@
+package com.iflytek.mytask;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.donkingliang.imageselector.utils.ImageSelector;
+
+import com.iflytek.mytask.adapter.ImageAdapter;
+
+import java.util.ArrayList;
+
+//只是用+号调用ImageSelector
+public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
+
+    private static String TAG = MainActivity2.class.getSimpleName();
+    private static final int REQUEST_CODE = 0x00000011;
+    private RecyclerView rvImage;
+    private ImageAdapter mAdapter;
+    private static  ArrayList<String> images  = new ArrayList<>();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_main2);
+        initView();
+    }
+
+    private void initView() {
+        rvImage = findViewById(R.id.rv_image);
+        rvImage.setLayoutManager(new GridLayoutManager(this, 3));
+        mAdapter = new ImageAdapter(this);
+        rvImage.setAdapter(mAdapter);
+        if(!images.contains("添加数据，使加号始终保持在最后一个！")){
+            images.add("添加数据，使加号始终保持在最后一个！");
+        }
+        mAdapter.refresh(images);
+        mAdapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                if(position == images.size() - 1){
+                    ImageSelector.builder()
+                            .useCamera(true) // 设置是否使用拍照
+                            .setSingle(false)  //设置是否单选
+                            .canPreview(true) //是否点击放大图片查看,，默认为true
+                            .setMaxSelectCount(0) // 图片的最大选择数量，小于等于0时，不限数量。
+                            .start(MainActivity2.this, REQUEST_CODE); // 打开相册
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE && data != null) {
+            images = data.getStringArrayListExtra(ImageSelector.SELECT_RESULT);
+            for (int i = 0;i < images.size(); i++){
+                Log.e(TAG,"选中的图片分别为：" + images.get(i));
+            }
+            if(!images.contains("添加数据，使加号始终保持在最后一个！")){
+                images.add("添加数据，使加号始终保持在最后一个！");
+            }
+            mAdapter.refresh(images);
+        }
+    }
+}

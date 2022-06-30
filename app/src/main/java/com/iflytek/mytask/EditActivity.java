@@ -187,6 +187,8 @@ public class EditActivity extends Activity {
             }
             mAdapter.refresh(images);
         }
+        String str = String.join(",", images);
+        photoText.setText(str);
     }
 
 }

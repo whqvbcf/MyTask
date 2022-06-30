@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyTask</string>
+    <string name="edit_activity">SYS1</string>
+    <string name="show_activity">SYS2</string>
 </resources>

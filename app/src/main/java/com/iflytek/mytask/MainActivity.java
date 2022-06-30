@@ -22,7 +22,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +40,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView tv_title = findViewById(R.id.main_title);
+        //tv_title.setGravity(Gravity.CENTER);
+        tv_title.setText(R.string.app_name);
+        //getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
         myDb = new DBService(this);
         init();
     }
@@ -93,6 +100,7 @@ public class MainActivity extends Activity {
                 intent.putExtra(DBService.TITLE, values.getTitle().trim());
                 intent.putExtra(DBService.CONTENT, values.getContent().trim());
                 intent.putExtra(DBService.TIME, values.getTime().trim());
+                intent.putExtra(DBService.PIC, values.getPic().trim());
                 intent.putExtra(DBService.ID, values.getId().toString().trim());
                 startActivity(intent);
             }
@@ -184,8 +192,10 @@ public class MainActivity extends Activity {
             viewHolder.content.setText(content);
             viewHolder.time.setText(valuesList.get(position).getTime());
 
+            String pic = valuesList.get(position).getPic();
+            ArrayList <String>images = new ArrayList(Arrays.asList(pic.split(",")));
             Glide.with(context)
-                    .load(valuesList.get(position).getPic())
+                    .load(images.get(0))
                     .into(viewHolder.image);
 
             //viewHolder.image.setImageBitmap();

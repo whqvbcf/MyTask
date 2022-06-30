@@ -11,33 +11,39 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="请输入标题">
+
         <requestFocus />
     </EditText>
+
     <TextView
         android:id="@+id/edit_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#d7d5d5"
         android:gravity="right"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
+
     <TextView
         android:id="@+id/pic_uri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#a7a5a5"
         android:gravity="right"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
+
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:hint="请输入内容"
-        android:gravity="left"/>
+        android:gravity="left"
+        android:hint="请输入内容" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +57,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:text="保存"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
@@ -59,7 +66,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:text="取消"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_pic"
             android:layout_width="wrap_content"
@@ -67,6 +75,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:text="Photos"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

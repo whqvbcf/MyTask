@@ -39,5 +39,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation project(':imageselector')
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'me.jessyan:autosize:1.2.0'
+    //implementation 'me.jessyan:autosize:1.2.0'
 }

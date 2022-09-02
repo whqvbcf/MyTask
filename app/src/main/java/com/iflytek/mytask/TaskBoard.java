@@ -30,7 +30,7 @@ import java.util.List;
 
 import com.bumptech.glide.Glide;
 
-public class MainActivity extends Activity {
+public class TaskBoard extends Activity {
 
     DBService myDb;
     private Button mBtnAdd;
@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
         mBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EditActivity.class);
+                Intent intent = new Intent(TaskBoard.this, EditActivity.class);
                 startActivity(intent);
             }
         });
@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
         lv_note.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, ShowActivity.class);
+                Intent intent = new Intent(TaskBoard.this, ShowActivity.class);
                 Values values = (Values) lv_note.getItemAtPosition(position);
                 intent.putExtra(DBService.TITLE, values.getTitle().trim());
                 intent.putExtra(DBService.CONTENT, values.getContent().trim());
@@ -111,7 +111,7 @@ public class MainActivity extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 final Values values = (Values) lv_note.getItemAtPosition(position);
-                new AlertDialog.Builder(MainActivity.this)
+                new AlertDialog.Builder(TaskBoard.this)
                         .setTitle("提示框")
                         .setMessage("是否删除?")
                         .setPositiveButton("yes",

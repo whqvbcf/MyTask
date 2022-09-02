@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTask">
         <activity
-            android:name=".MainActivity"
+            android:name=".TaskBoard"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,9 +38,9 @@
         <!--            android:name="design_height_in_dp"-->
         <!--            android:value="738" />-->
 
-        <activity
-            android:name=".MainActivity2"
-            android:exported="true"></activity>
+<!--        <activity-->
+<!--            android:name=".MainActivity2"-->
+<!--            android:exported="true"></activity>-->
         <activity
             android:name="com.donkingliang.imageselector.ImageSelectorActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

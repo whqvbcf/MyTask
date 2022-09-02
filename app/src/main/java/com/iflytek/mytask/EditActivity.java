@@ -73,7 +73,7 @@ public class EditActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                Intent intent = new Intent(EditActivity.this, TaskBoard.class);
                 startActivity(intent);
             }
         });
@@ -103,7 +103,7 @@ public class EditActivity extends Activity {
                 values.put(DBService.PIC, photo);
                 db.insert(DBService.TABLE, null, values);
                 Toast.makeText(EditActivity.this, "保存成功", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                Intent intent = new Intent(EditActivity.this, TaskBoard.class);
                 startActivity(intent);
                 db.close();
             }

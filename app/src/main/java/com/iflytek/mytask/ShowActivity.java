@@ -92,7 +92,7 @@ public class ShowActivity extends Activity {
                 db.update(DBService.TABLE, values, DBService.ID + "=?", new String[]{value.getId().toString()});
                 Toast.makeText(ShowActivity.this, "修改成功", Toast.LENGTH_LONG).show();
                 db.close();
-                Intent intent = new Intent(ShowActivity.this, MainActivity.class);
+                Intent intent = new Intent(ShowActivity.this, TaskBoard.class);
                 startActivity(intent);
             }
         });
@@ -120,7 +120,7 @@ public class ShowActivity extends Activity {
                                         db.update(DBService.TABLE, values, DBService.ID + "=?", new String[]{value.getId().toString()});
                                         Toast.makeText(ShowActivity.this, "修改成功", Toast.LENGTH_LONG).show();
                                         db.close();
-                                        Intent intent = new Intent(ShowActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(ShowActivity.this, TaskBoard.class);
                                         startActivity(intent);
                                     }
                                 })
@@ -128,7 +128,7 @@ public class ShowActivity extends Activity {
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(ShowActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(ShowActivity.this, TaskBoard.class);
                                         startActivity(intent);
                                     }
                                 }).show();
